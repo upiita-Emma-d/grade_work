@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector de puertos</title>
+    <link rel="stylesheet" href="{%static 'css/foundation.min.css'%}">
+    <link rel="stylesheet" href="{%static 'index.css'%}">
+</head>
+<body>
+    <div class = "grid-x">
+        <h2 class="cell large-2">Sensor temperatura</h2>
+        <h2 class="cell large-2">Sensor 400nm</h2>
+        <h2 class="cell large-2">Sensor 450nm</h2>
+        <h2 class="cell large-2">Sensor 700nm</h2>
+
+    </div>
+    <h1 class="welcome">{{welcome_message}}</h1>
+    {% if puertos %}
+    
+    <div>
+        <input list = "puertos">
+        <datalist id = "puertos">
+        {% for puerto in puertos %}
+        <option value="{{puerto}}"></option>
+        {% endfor %}
+    </datalist>
+    </div>
+    <a class="button primary" href="#">Seleccionar</a>
+{% else %}
+    <p>No ports aviable</p>
+{% endif %}
+</body>
+</html>
