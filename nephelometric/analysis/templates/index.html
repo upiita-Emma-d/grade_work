@@ -21,16 +21,17 @@
     {% if puertos %}
     
     <div>
-        <input list = "puertos">
+        <input list = "puertos"   type="text" placeholder="Placa">
         <datalist id = "puertos">
-        {% for puerto in puertos %}
-        <option value="{{puerto}}"></option>
-        {% endfor %}
-    </datalist>
+            {% for puerto in puertos %}
+            <option value="{{puerto}}"></option>
+            {% endfor %}
+        </datalist>
     </div>
     <a class="button primary" href="#">Seleccionar</a>
-{% else %}
-    <p>No ports aviable</p>
-{% endif %}
+    {% else %}
+        <p>No ports aviable</p>
+    {% endif %}
+
 </body>
 </html>

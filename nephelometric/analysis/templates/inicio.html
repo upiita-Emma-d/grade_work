@@ -7,5 +7,13 @@ Sistema de analisis
 
 {% block content %}
 {% include 'includes/header.html' %}
-<p>Hola</p>
+<h5 style = "text-align: center">Bienvenido</h5>
+<div class = "grid-x align-center" >
+    <div class="callout success cell large-5" >
+      <p style = "text-align: center">{{welcome_message}}</p>
+      <div style = "text-align: center">
+        <a href="#" >Desconectar cualquier placa</a>
+      </div>
+    </div>
+</div>
 {% endblock content%}
