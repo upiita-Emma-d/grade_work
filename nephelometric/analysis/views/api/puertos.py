@@ -3,7 +3,7 @@ from rest_framework.serializers import ValidationError
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import AllowAny
-
+from analysis.helpers_analysis.get_ports_aviable import serial_ports
 class PuertAviableView(APIView):
     """
     """
@@ -11,9 +11,11 @@ class PuertAviableView(APIView):
     authentication_classes = []
 
     def get(self, request):
-        print("EndPoint exitoso")
+        data = {
+            'ports_aviable':serial_ports()
+        }
         return Response(
-                data=True,
+                data=data,
                 status=status.HTTP_200_OK
             )
         # except ValidationError as e:
