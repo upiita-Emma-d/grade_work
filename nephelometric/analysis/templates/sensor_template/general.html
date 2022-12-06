@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title_page %}
+Inicio
+{% endblock title_page%}
+
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<div id="chart_div">
+    {% for dato in datos %}
+        <p>{{dato}}</p>
+    {% endfor %}
+</div>
+{% endblock content%}

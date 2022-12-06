@@ -1,6 +1,7 @@
 import sys
 import glob
 import serial
+import time
 def serial_ports():
     """ Lists serial port names
 
@@ -28,3 +29,41 @@ def serial_ports():
         except (OSError, serial.SerialException):
             pass
     return result
+
+def limpiar_buffer(serial_arduino):
+    serial_arduino.flushInput()
+    serial_arduino.write(bytes("o", 'utf-8'))
+    timeout=time.time()+3.0
+    data = b""
+    while serial_arduino.inWaiting() or time.time()-timeout<0.0:
+        if serial_arduino.inWaiting()>0:
+            data+=serial_arduino.read(serial_arduino.inWaiting())
+            timeout=time.time()+1.0
+
+
+def open_port_serial(port_string):
+    serial_arduino = serial.Serial(port_string, 9600)
+    limpiar_buffer(serial_arduino)
+    print("Phase 3")
+    cadena  = "adc_0"
+    serial_arduino.write(bytes(cadena, 'utf-8'))
+    print("Phase 4")
+    data = serial_arduino.readline()
+    print(data)
+    data = serial_arduino.readline()
+    print(data)
+    data = serial_arduino.readline()
+    print(data)
+    los_datos = []
+    while 1:
+        data = serial_arduino.readline()
+        #print(data)
+        data_i = data.decode("utf-8")
+        try: 
+            los_datos.append(float(data_i.replace(",\r\n","")))
+        except:
+            pass
+        if data ==  (b'FIN\r\n'):
+            print(los_datos)
+            break
+    return los_datos

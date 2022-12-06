@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title_page %}
+Temperatura
+{% endblock title_page%}
+
+
+{% block content %}
+{% include 'includes/header.html' %}
+{% for dato in datos %}
+<p>{{dato}}</p>
+
+<div id="chart_div"></div>
+{% endfor %}
+{% endblock content%}

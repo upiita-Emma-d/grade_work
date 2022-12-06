@@ -1,42 +1,44 @@
+{% load static %}
 <div class="top-bar">
-    <div class="top-bar-left">
-      <ul class="dropdown menu" data-dropdown-menu>
-        <li class="menu-text">{{project_name}}</li>
-        <li>
-          <a href="#">Nefelometria</a>
-          <ul class="menu vertical">
-            <li><a href="#">350nm</a></li>
-            <li><a href="#">450nm</a></li>
-            <li><a href="#">750nm</a></li>
-            <li><a href="#">900nm</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Temperatura</a></li>
-        <li><a href="#">Orp</a></li>
-        <li><a href="#">Ph</a></li>
-      </ul>
-    </div>
-    <div class="top-bar-right">
-      <ul class="menu">
-
-        {% if puertos %}
-    
-        <div>
-          <input list = "puertos" placeholder="Placa seleccionada">
-          <datalist id = "puertos">
-            {% for puerto in puertos %}
-              <option value="{{puerto}}"></option>
-            {% endfor %}
-          </datalist>
-        </div>
-        {% else %}
-            <p>No ports aviable</p>
-        {% endif %}
-        {% comment %} <li><input type="search" placeholder="Placa seleccionada"></li> {% endcomment %}
-        <li><button type="button" class="button">Seleccionar</button></li>
-      </ul>
-    </div>
-
-
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">{{project_name}}</li>
+      <li>
+        <a href="#">Nefelometria</a>
+        <ul class="menu vertical">
+          <li><a href="#">350nm</a></li>
+          <li><a href="#">450nm</a></li>
+          <li><a href="#">750nm</a></li>
+          <li><a href="#">900nm</a></li>
+        </ul>
+      </li>
+      <li><a href="{% url 'nephelometric_app:temperatura' %}">Temperatura</a></li>
+      <li><a href="#">Orp</a></li>
+      <li><a href="#">Ph</a></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      
+      {% if puertos %}
+      
+      <div>
+        <input list = "puertos" id = "puerto" placeholder="Placa seleccionada">
+        <datalist id = "puertos">
+          {% for puerto in puertos %}
+          <option value="{{puerto}}"></option>
+          {% endfor %}
+        </datalist>
+      </div>
+      {% else %}
+      <p>No ports aviable</p>
+      {% endif %}
+      {% comment %} <li><input type="search" placeholder="Placa seleccionada"></li> {% endcomment %}
+      {% comment %} <li><button type="button" class="button">Seleccionar</button></li> {% endcomment %}
+    </ul>
   </div>
   
+  
+</div>
+
+
