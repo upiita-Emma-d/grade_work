@@ -29,6 +29,8 @@ const obtain_boards_aviable = (urlApi) =>{
 
 // optionList = ["COM1", "COM2", "COM3", "COM4"];
 var optionList = obtain_boards_aviable(API_LOCAL);
+console.log("Option list");
+console.table(optionList);
 
 function fillDataList() {
     var container = document.getElementById('my-text-box'),
