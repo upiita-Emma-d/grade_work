@@ -2,17 +2,23 @@ const input_port = document.querySelector('#my-text-box');
 const chart_general  = document.querySelector('#chart_div');
 const API_LOCAL = 'http://localhost:8000';
 
-async function fetchData(urlApi){
-  const response = await fetch(urlApi);
-  const data = await response.json();
-  return data
+function fetchData(urlApi){
+  fetch(urlApi)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      return data
+    })
+  // const response = await fetch(urlApi);
+  // const data = await response.json();
+  // return data
 }
 console.log(fetchData(`${API_LOCAL}/boards`));
 
-const obtain_boards_aviable = async (urlApi) =>{
+const obtain_boards_aviable = (urlApi) =>{
   try {
-    const optionList = await fetchData(`${urlApi}/boards`);
-    console.log(optionList.ports_aviable);
+    const optionList = fetchData(`${urlApi}/boards`);
+    console.log(optionList);
     return optionList.ports_aviable;
   }catch (error){
     console.log(error)
@@ -21,8 +27,8 @@ const obtain_boards_aviable = async (urlApi) =>{
 
 }
 
-optionList = ["COM1", "COM2", "COM3", "COM4"];
-//var optionList = obtain_boards_aviable(API_LOCAL);
+// optionList = ["COM1", "COM2", "COM3", "COM4"];
+var optionList = obtain_boards_aviable(API_LOCAL);
 
 function fillDataList() {
     var container = document.getElementById('my-text-box'),
