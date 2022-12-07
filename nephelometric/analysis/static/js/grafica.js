@@ -25,7 +25,7 @@ async function fetchData(urlApi){
   const response = await fetch(urlApi);
   const data = await response.json();
   console.log(data);
-  fillDataList(data)
+  fillDataList(data.ports_aviable)
 }
 
 fetchData(`${API_LOCAL}/boards`);
