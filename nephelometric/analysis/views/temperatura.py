@@ -1,7 +1,7 @@
 
 from django.shortcuts import render
 import user_messages.models as models_message
-from analysis.helpers_analysis.get_ports_aviable import serial_ports,open_port_serial
+from analysis.helpers_analysis.arduino_helpers import serial_ports,main_arduino
 from analysis.helpers_analysis.get_messages import get_messages
 import serial
 import time
@@ -14,7 +14,7 @@ def temperatura_view(request):
     port = serial_ports()
     print(port)
     try:
-        datos = open_port_serial(port[1])
+        datos = main_arduino(port[1])
     except IndexError:
         datos = [0,0,0,0,0]
     welcome_message  = get_messages('bienvenida')

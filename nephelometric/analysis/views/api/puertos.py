@@ -3,7 +3,8 @@ from rest_framework.serializers import ValidationError
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import AllowAny
-from analysis.helpers_analysis.get_ports_aviable import serial_ports
+from analysis.helpers_analysis.arduino_helpers import serial_ports
+
 class PuertAviableView(APIView):
     """
     """

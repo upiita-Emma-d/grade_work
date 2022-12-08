@@ -9,3 +9,5 @@ class Message(models.Model):
     # Campos
     location = models.CharField(max_length=50)
     message = models.TextField()
+
+    

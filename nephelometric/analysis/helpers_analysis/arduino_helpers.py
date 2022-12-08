@@ -2,6 +2,11 @@ import sys
 import glob
 import serial
 import time
+import json
+import itertools
+list2d = [[1,2,3], [4,5,6], [7], [8,9]]
+merged = list(itertools.chain(*list2d))
+
 def serial_ports():
     """ Lists serial port names
 
@@ -41,29 +46,36 @@ def limpiar_buffer(serial_arduino):
             timeout=time.time()+1.0
 
 
-def open_port_serial(port_string):
+def main_arduino(port_string):
     serial_arduino = serial.Serial(port_string, 9600)
     limpiar_buffer(serial_arduino)
-    print("Phase 3")
-    cadena  = "adc_0"
-    serial_arduino.write(bytes(cadena, 'utf-8'))
-    print("Phase 4")
-    data = serial_arduino.readline()
-    print(data)
-    data = serial_arduino.readline()
-    print(data)
-    data = serial_arduino.readline()
-    print(data)
+    serial_arduino.write(bytes("sensor_0", 'utf-8'))
     los_datos = []
     while 1:
         data = serial_arduino.readline()
-        #print(data)
         data_i = data.decode("utf-8")
-        try: 
-            los_datos.append(float(data_i.replace(",\r\n","")))
-        except:
-            pass
-        if data ==  (b'FIN\r\n'):
-            print(los_datos)
+        if data ==  (b'END\r\n'):
             break
+        try:
+            los_datos.append(json.loads(data_i))
+        except ValueError:
+            print("Error")
+            pass
     return los_datos
+
+def parser_values_to_voltage(dato):
+            try:
+                print(dato)
+                return int(dato) *  (5 /65636)
+            except ValueError:
+                pass
+
+def create_array_structure(datos_arduino):
+    general_list = []
+    for i in datos_arduino:
+            data_list = i.get("sensor1",None)
+            if data_list is not None:
+                data_list = data_list.replace('[','').replace(']','').split(',')
+                data_list = [ parser_values_to_voltage(value) for value in data_list]
+                general_list.append(data_list)
+    return list(itertools.chain(*general_list))
