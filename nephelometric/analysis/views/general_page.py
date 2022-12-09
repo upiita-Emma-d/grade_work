@@ -11,10 +11,10 @@ def welcome_messages_view(request):
     project_name = get_messages('project_name')
      
     port = serial_ports()
-    try:
-        datos = main_arduino(port[1])
-    except IndexError:
-        datos = [0,0,0,0,0] 
+    #try:
+    #datos = main_arduino(port[1])
+    #except IndexError:
+    datos = [0,0,0,0,0] 
     puertos = serial_ports()
     context = {'puertos': puertos,
                'welcome_message':welcome_message,

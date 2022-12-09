@@ -8,5 +8,5 @@ urlpatterns = [
     path('temperatura/', temperatura_view, name = "temperatura"),
     #Api
     path('boards/',PuertAviableView.as_view(), name = "ports_avible"),
-    path('sensors/<int:board_index>',DataSensorView.as_view(), name = "sensors"),
+    path("sensors/<str:board_index>",DataSensorView.as_view(), name = "sensors"),
 ]

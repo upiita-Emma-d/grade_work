@@ -43,7 +43,7 @@ async function fetchData(urlApi){
   CreateGrafic(data)
 }
 
-fetchData(`${API_LOCAL}/sensors/1`);
+fetchData(`${API_LOCAL}/sensors/tty.usbmodem1101`);
 
 
 

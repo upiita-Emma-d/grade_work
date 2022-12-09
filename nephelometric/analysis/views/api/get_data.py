@@ -13,10 +13,10 @@ class DataSensorView(APIView):
     authentication_classes = []
 
     def post(self, request,board_index):
-        
-        boards  = serial_ports()
- 
-        datos_arduino_dict = main_arduino(boards[board_index])
+        self.http_method_names.append("GET")
+        board_index = str(board_index)
+        board_index = "/"+"dev"+ "/" + board_index
+        datos_arduino_dict = main_arduino(board_index)
         data_flat = create_array_structure(datos_arduino_dict)
         data_np = np.array(data_flat)
         promedio = np.mean(data_np)
