@@ -47,21 +47,31 @@ def limpiar_buffer(serial_arduino):
 
 
 def main_arduino(port_string):
-    serial_arduino = serial.Serial(port_string, 9600)
-    limpiar_buffer(serial_arduino)
-    serial_arduino.write(bytes("sensor_0", 'utf-8'))
-    los_datos = []
-    while 1:
-        data = serial_arduino.readline()
-        data_i = data.decode("utf-8")
-        if data ==  (b'END\r\n'):
-            break
-        try:
-            los_datos.append(json.loads(data_i))
-        except ValueError:
-            print("Error")
-            pass
-    return los_datos
+    try:
+        serial_arduino = serial.Serial(port_string, 9600)
+        limpiar_buffer(serial_arduino)
+        serial_arduino.write(bytes("sensor_0", 'utf-8'))
+        los_datos = []
+        while 1:
+            data = serial_arduino.readline()
+            data_i = data.decode("utf-8")
+            if data ==  (b'END\r\n'):
+                break
+            try:
+                los_datos.append(json.loads(data_i))
+            except ValueError:
+                print("Error")
+                pass
+        return los_datos
+    except FileNotFoundError:
+        print(f"File {port_string} not found!", file=sys.stderr)
+        raise
+        return {}
+    except serial.serialutil.SerialException:
+        raise
+        print("SIUPER")
+        return {}
+   
 
 def parser_values_to_voltage(dato):
             try:
