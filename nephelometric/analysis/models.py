@@ -37,6 +37,11 @@ class Emisor(models.Model):
         return f"{self.common_name}"
         
 
+class Center(Paranoid):
+    name = models.CharField(max_length=255)
+    def __init__(self):
+        return f"{self.name}"
+    
 class Muestra(Paranoid):  # make an inheritance
     # all the default fields come with inheritance:
     # created_at
@@ -49,14 +54,15 @@ class Muestra(Paranoid):  # make an inheritance
         Emisor,
         on_delete=models.CASCADE
     )
+    center = models.ForeignKey(
+        Center,
+        on_delete= models.CASCADE,
+        blank=True,
+        null=True,
+    )
     voltaje_prom = models.DecimalField(max_digits=6, decimal_places=4)
     max_voltage = models.DecimalField(max_digits=6, decimal_places=4)
     min_voltage = models.DecimalField(max_digits=6, decimal_places=4)
     def __str__(self):
         return f"Longitud de onda {self.wavelength} voltaje {self.voltaje_register}"
 # Create your models here.
-
-class Center(Paranoid):
-    name = models.CharField(max_length=255)
-    def __init__(self):
-        return f"{self.name}"
