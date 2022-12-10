@@ -19,9 +19,3 @@ class PuertAviableView(APIView):
                 data=data,
                 status=status.HTTP_200_OK
             )
-        # except ValidationError as e:
-        #     return ApiResponse(
-        #         success=False,
-        #         message=f"Revisa que los datos sean correctos y vuelve a intentar",
-        #         status=status.HTTP_400_BAD_REQUEST
-        #     )
