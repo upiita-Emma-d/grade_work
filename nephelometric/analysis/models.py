@@ -56,3 +56,7 @@ class Muestra(Paranoid):  # make an inheritance
         return f"Longitud de onda {self.wavelength} voltaje {self.voltaje_register}"
 # Create your models here.
 
+class Center(Paranoid):
+    name = models.CharField(max_length=255)
+    def __init__(self):
+        return f"{self.name}"

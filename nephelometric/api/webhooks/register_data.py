@@ -1,11 +1,11 @@
 from rest_framework.views import APIView
 from rest_framework import status
-
+from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 import logging
 
 
-class WooCommerceWebhook(APIView):
+class MuestraRegisterView(APIView):
     """
     Datos de rasberry pi
     """
@@ -14,15 +14,14 @@ class WooCommerceWebhook(APIView):
 
     def post(self, request, format=None):
         """
-        Processes a WooCommerce webhook request
+        Processes a data sent to rasberry pi
 
         Returns:
-            ApiResponse: An appropriate ApiResponse. Can return 200 or 404
+            Response: status
         """
-
-        create_webhook_log(WebhookLog.WOOCOMMERCE, request)
-
-        return ApiResponse(
-            success=True,
+        print(request.data)
+        print("ENTRE "*10)
+        return Response(
+            data = request.data,
             status=status.HTTP_200_OK
         )

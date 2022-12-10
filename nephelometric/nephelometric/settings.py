@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # Nativos
     'analysis',
     'user_messages',
+    'api',
     
 ]
 
