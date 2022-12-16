@@ -40,8 +40,8 @@ class Emisor(models.Model):
 
 class Center(Paranoid):
     name = models.CharField(max_length=255)
-    # def __init__(self):
-    #     return f"{self.name}"
+    def __str__(self):
+         return f"{self.name}"
     
 class Muestra(Paranoid):  # make an inheritance
     # all the default fields come with inheritance:
