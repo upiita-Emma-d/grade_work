@@ -1,6 +1,7 @@
 from django.db import models
 from paranoid_model.models import Paranoid
-
+#from django.contrib.postgres.fields import ArrayField, JSONField
+from django.utils import timezone
 class Sensor(models.Model):
     TEMPERATURA = 0
     ORP = 1
@@ -39,8 +40,8 @@ class Emisor(models.Model):
 
 class Center(Paranoid):
     name = models.CharField(max_length=255)
-    def __init__(self):
-        return f"{self.name}"
+    # def __init__(self):
+    #     return f"{self.name}"
     
 class Muestra(Paranoid):  # make an inheritance
     # all the default fields come with inheritance:
@@ -66,3 +67,9 @@ class Muestra(Paranoid):  # make an inheritance
     def __str__(self):
         return f"Longitud de onda {self.wavelength} voltaje {self.voltaje_register}"
 # Create your models here.
+class MuestraLog(models.Model):
+    json = models.CharField(
+        blank=True,
+        null=True, 
+        max_length=255)
+    created_at = models.DateTimeField(auto_now_add=timezone.now)
