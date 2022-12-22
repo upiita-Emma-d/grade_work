@@ -29,14 +29,11 @@ class MuestraRegisterView(APIView):
             )
         except Exception:
             pass
-        print(data)
         try:
             sensor = Sensor.objects.get(common_name = data["sensor_name"])
-            print(sensor)
             emisor = Emisor.objects.get(common_name = data["emisor_name"])
-            print(emisor)
             center = Center.objects.get(name = data["center"])
-            print(center)
+          
             
             muestra = Muestra.objects.create(
             sensor = sensor, 
@@ -46,12 +43,19 @@ class MuestraRegisterView(APIView):
             max_voltage = data["max_voltage"],
             min_voltage = data["min_voltage"],
             )
-            print(request.data)
             return Response(
                 data = request.data,
                 status=status.HTTP_200_OK
             )
         except Sensor.DoesNotExist:
             return Response(
-                success=False, 
+                data = f"No found sensor_name",
+                status=status.HTTP_404_NOT_FOUND)
+        except Emisor.DoesNotExist:
+            return Response(
+                data = f"No found emisor_name",
+                status=status.HTTP_404_NOT_FOUND)
+        except Center.DoesNotExist:
+            return Response(
+                data = f"No found center",
                 status=status.HTTP_404_NOT_FOUND)

@@ -7,9 +7,8 @@ Temperatura
 
 {% block content %}
 {% include 'includes/header.html' %}
-{% for dato in datos %}
-<p>{{dato}}</p>
-
+{% for min_v in min_vs %}
+<p>{{min_v}}</p>
 <div id="chart_div"></div>
 {% endfor %}
 {% endblock content%}
