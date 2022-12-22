@@ -4,13 +4,11 @@
 Inicio
 {% endblock title_page%}
 
-
 {% block content %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/Chart.min.js"></script>
 {% include 'includes/header.html' %}
 <a href="https://parzibyte.me/blog">By Parzibyte</a>
 <a href="../index.html">| Ir al inicio</a>
 <canvas id="grafica"></canvas>
-<button id = "arduino_data" type = "button"> DATOS </button>
 <script src="{%static 'js/script.js'%}"></script>
 {% endblock content%}
