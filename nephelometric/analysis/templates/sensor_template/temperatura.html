@@ -7,8 +7,8 @@ Temperatura
 
 {% block content %}
 {% include 'includes/header.html' %}
-{% for min_v in min_vs %}
-<p>{{min_v}}</p>
-<div id="chart_div"></div>
-{% endfor %}
+<canvas id="grafica"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.0/moment.min.js"></script>
+<script src="{%static 'js/script.js'%}"></script>
+
 {% endblock content%}
