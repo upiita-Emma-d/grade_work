@@ -4,7 +4,7 @@ __pycache__/
 
 # C extensions
 *.so
-STATIC/
+/nephelometric/STATIC/
 
 *.sqlite3
 *.env
