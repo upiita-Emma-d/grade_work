@@ -16,7 +16,7 @@ class DataSensorView(APIView):
 
     def get(self, request):
         try:
-            datos = Muestra.objects.all()[:50]
+            datos = Muestra.objects.all()[:100]
             
             data_s = MuestraSerializer(
                 instance=datos, many=True
