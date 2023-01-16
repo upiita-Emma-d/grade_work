@@ -16,12 +16,13 @@ class DataSensorView(APIView):
 
     def get(self, request):
         try:
-            datos = Muestra.objects.all()
+            datos = Muestra.objects.all()[:50]
+            
             data_s = MuestraSerializer(
                 instance=datos, many=True
-            ).data
+            )
             return Response(
-                    data=data_s,
+                    data=data_s.data,
                     status=status.HTTP_200_OK
                 )
 

@@ -1,5 +1,5 @@
 
-const URL = 'http://localhost:8000/get_muestra/';
+const URL = 'https://sistema-calidad-del-agua.link/get_muestra/';
  
 fetch(URL)
   .then(res => res.json())

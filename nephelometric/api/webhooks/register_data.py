@@ -30,19 +30,22 @@ class MuestraRegisterView(APIView):
         except Exception:
             pass
         try:
-            sensor = Sensor.objects.get(common_name = data["sensor_name"])
-            emisor = Emisor.objects.get(common_name = data["emisor_name"])
             center = Center.objects.get(name = data["center"])
-          
+            for llave in data.keys():
+                if llave != "center":
+                    data_per_sensor = data[llave]
+                    sensor = Sensor.objects.get(common_name = data_per_sensor["sensor_name"])
+                    emisor = Emisor.objects.get(common_name = data_per_sensor["emisor_name"])
+                    data_exitosa = Muestra.objects.create(
+                    sensor = sensor, 
+                    emisor = emisor,
+                    center = center,
+                    voltaje_prom = data_per_sensor["voltaje_prom"],
+                    max_voltage = data_per_sensor["max_voltage"],
+                    min_voltage = data_per_sensor["min_voltage"],
+                    )
             
-            muestra = Muestra.objects.create(
-            sensor = sensor, 
-            emisor = emisor,
-            center = center,
-            voltaje_prom = data["voltaje_prom"],
-            max_voltage = data["max_voltage"],
-            min_voltage = data["min_voltage"],
-            )
+
             return Response(
                 data = request.data,
                 status=status.HTTP_200_OK
