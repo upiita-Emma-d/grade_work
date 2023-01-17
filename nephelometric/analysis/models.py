@@ -69,7 +69,7 @@ class Muestra(Paranoid):  # make an inheritance
     max_voltage = models.DecimalField(max_digits=6, decimal_places=4)
     min_voltage = models.DecimalField(max_digits=6, decimal_places=4)
     def __str__(self):
-        return f"Vp:{self.voltaje_prom} |VMax: {self.max_voltage} | Vmin{self.min_voltage}"
+        return f"Vp:{self.voltaje_prom} {self.sensor.common_name}"
 # Create your models here.
 class MuestraLog(models.Model):
     json = models.CharField(
