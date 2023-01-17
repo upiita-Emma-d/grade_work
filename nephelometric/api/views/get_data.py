@@ -5,7 +5,7 @@ from rest_framework import status
 from rest_framework.permissions import AllowAny
 from analysis.helpers_analysis.arduino_helpers import serial_ports, main_arduino, create_array_structure
 import numpy as np
-from analysis.models import Muestra
+from analysis.models import Muestra, Sensor
 import serial
 from api.serializers import MuestraSerializer
 class DataSensorView(APIView):
@@ -16,8 +16,8 @@ class DataSensorView(APIView):
 
     def get(self, request):
         try:
-            datos = Muestra.objects.all()[:100]
-            
+            sensor = Sensor.objects.get(common_name = "DS18B20")
+            datos = Muestra.objects.all().filter(sensor = sensor)[:100]
             data_s = MuestraSerializer(
                 instance=datos, many=True
             )

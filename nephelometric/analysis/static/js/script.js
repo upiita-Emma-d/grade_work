@@ -26,19 +26,19 @@ fetch(URL)
             labels: fechas,
             datasets: [{
                 data: min_voltage,
-                borderColor: "red",
+                borderColor: "blue",
                 fill: false,
                 label: 'Voltaje minimo',
                 },
                 {
                 data: max_voltage,
-                borderColor: "green",
+                borderColor: "red",
                 fill: false,
                 label: 'Voltaje máximo',
                 },
                 {
                 data: voltaje_prom,
-                borderColor: "green",
+                borderColor: "black",
                 fill: false,
                 label: 'Voltaje promedio',
                 },
