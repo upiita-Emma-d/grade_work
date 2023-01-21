@@ -9,7 +9,7 @@ import time
 from analysis.models import Muestra
 
 
-def temperatura_view(request):
+def ultra_violeta_view(request):
     project_name = get_messages('project_name')
     
     context = {
