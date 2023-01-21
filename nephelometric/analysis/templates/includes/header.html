@@ -6,10 +6,10 @@
       <li>
         <a href="#">Nefelometria</a>
         <ul class="menu vertical">
-          <li><a href="#">350nm</a></li>
-          <li><a href="#">450nm</a></li>
+          <li><a href="{% url 'nephelometric_app:ultra_violeta' %}">Temperatura</a></li>
+          {% comment %} <li><a href="#">450nm</a></li>
           <li><a href="#">750nm</a></li>
-          <li><a href="#">900nm</a></li>
+          <li><a href="#">900nm</a></li> {% endcomment %}
         </ul>
       </li>
       <li><a href="{% url 'nephelometric_app:temperatura' %}">Temperatura</a></li>
