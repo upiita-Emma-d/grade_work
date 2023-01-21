@@ -9,5 +9,6 @@ urlpatterns = [
     # #Api
     # path('boards/',PuertAviableView.as_view(), name = "ports_avible"),
     path("muestra/",MuestraRegisterView.as_view(), name = "muestra"),
-    path("get_muestra/",DataSensorView.as_view(), name = "muestra"),
+    path("get_muestra_temperatura/",DataSensorView.as_view(), name = "muestra_temperatura"),
+    path("get_muestra_uv/",DataSensorUVView.as_view(), name = "muestra_uv"),
 ]

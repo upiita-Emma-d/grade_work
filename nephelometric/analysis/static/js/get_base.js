@@ -10,10 +10,6 @@ fetch(URL)
     const max_voltage = data.map(obj => obj.max_voltage);
     const voltaje_prom = data.map(obj => obj.voltaje_prom);
     console.log(max_voltage);
-    // for (let i = 0; i < max_voltage.length; i++) {
-    //     numbers[i] = i;
-    //   }
-    // console.log(numbers)
 
     const fechas = data.map(obj => moment(obj.created_at).format("DD-MM-YYYY HH:mm:ss"));
     // Obtener una referencia al elemento canvas del DOM
