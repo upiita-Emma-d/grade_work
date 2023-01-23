@@ -1,6 +1,6 @@
 
-//const URL = 'https://sistema-calidad-del-agua.link/get_muestra_ph/';
-const URL = 'http://127.0.0.1:8000/get_muestra_ph/';
+const URL = 'https://sistema-calidad-del-agua.link/get_muestra_ph/';
+//const URL = 'http://127.0.0.1:8000/get_muestra_ph/';
 // http://127.0.0.1:8000/ph/
 fetch(URL)
   .then(res => res.json())
