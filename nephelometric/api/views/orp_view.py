@@ -18,6 +18,7 @@ class DataSensorORPView(APIView):
         try:
             sensor = Sensor.objects.get(common_name = "ORP-1/ORTK-777")
             datos = Muestra.objects.all().filter(sensor = sensor).order_by("-created_at")[:100]
+            datos = datos[::-1]
             data_s = MuestraSerializer(
                 instance=datos, many=True
             )

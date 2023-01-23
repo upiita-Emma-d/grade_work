@@ -18,6 +18,7 @@ class DataSensorTurbidimetriaView(APIView):
         try:
             sensor = Sensor.objects.get(common_name = "sensor_de_turbidimetria_1")
             datos = Muestra.objects.all().filter(sensor = sensor,emisor__common_name =  "led_verde").order_by("-created_at")[:100]
+            datos = datos[::-1]
             data_s = MuestraSerializer(
                 instance=datos, many=True
             )
