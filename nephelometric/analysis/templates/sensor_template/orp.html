@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title_page %}
+ORP
+{% endblock title_page%}
+
+
+{% block content %}
+{% include 'includes/header.html' %}
+<canvas id="grafica"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.0/moment.min.js"></script>
+<script src="{%static 'js/get_orp.js'%}"></script>
+
+{% endblock content%}

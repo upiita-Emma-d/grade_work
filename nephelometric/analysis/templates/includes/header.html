@@ -7,14 +7,15 @@
         <a href="#">Nefelometria</a>
         <ul class="menu vertical">
           <li><a href="{% url 'nephelometric_app:uv' %}">Ultra Violeta</a></li>
+          <li><a href="{% url 'nephelometric_app:turbidimetria' %}">Turbidimetria</a></li>
           {% comment %} <li><a href="#">450nm</a></li>
           <li><a href="#">750nm</a></li>
           <li><a href="#">900nm</a></li> {% endcomment %}
         </ul>
       </li>
       <li><a href="{% url 'nephelometric_app:temperatura' %}">Temperatura</a></li>
-      <li><a href="#">Orp</a></li>
-      <li><a href="#">pH</a></li>
+      <li><a href="{% url 'nephelometric_app:orp' %}">ORP</a></li>
+      <li><a href="{% url 'nephelometric_app:ph' %}">pH</a></li>
     </ul>
   </div>
   <div class="top-bar-right">

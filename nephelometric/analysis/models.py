@@ -2,6 +2,8 @@ from django.db import models
 from paranoid_model.models import Paranoid
 #from django.contrib.postgres.fields import ArrayField, JSONField
 from django.utils import timezone
+
+import datetime
 class Sensor(models.Model):
     TEMPERATURA = 0
     ORP = 1
@@ -69,7 +71,9 @@ class Muestra(Paranoid):  # make an inheritance
     max_voltage = models.DecimalField(max_digits=6, decimal_places=4)
     min_voltage = models.DecimalField(max_digits=6, decimal_places=4)
     def __str__(self):
-        return f"Vp:{self.voltaje_prom} {self.sensor.common_name}"
+        minutes = self.created_at.strftime("%H:%M")
+        #return f"Muestra created at minute {minutes}"
+        return f"Vp:{self.voltaje_prom} {self.sensor.common_name} | {self.emisor} | {minutes}"
 # Create your models here.
 class MuestraLog(models.Model):
     json = models.CharField(

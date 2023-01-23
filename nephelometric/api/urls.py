@@ -11,4 +11,8 @@ urlpatterns = [
     path("muestra/",MuestraRegisterView.as_view(), name = "muestra"),
     path("get_muestra_temperatura/",DataSensorView.as_view(), name = "muestra_temperatura"),
     path("get_muestra_uv/",DataSensorUVView.as_view(), name = "muestra_uv"),
+    path("get_muestra_ph/",DataSensorpHView.as_view(), name = "muestra_ph"),
+    path("get_muestra_orp/",DataSensorORPView.as_view(), name = "muestra_orp"),
+    path("get_muestra_turbidimetria/",DataSensorTurbidimetriaView.as_view(), name = "muestra_turbidimetria"),
+    
 ]
